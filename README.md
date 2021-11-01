@@ -1,5 +1,7 @@
 # CS301-101
 
+**Facial Emotion Recognition and Detection**
+
 **What is the problem that you will be investigating? Why is it interesting?**
 
   From the time that technology has become part of our lives, it has come with constant discussions about improving security. Facial recognition is a program/ system that is used in different ways for reasons that pertain to: security, marketing, social media, and tracking. Other than fingerprint scanners, facial recognition is a relatively unique method that aims to read the face and be able to judge the expression, whether the face is a match, or adjust for an expression depending on the face. The ability of a program to adhere to the normal skills of a human is unusual and important to understand.
