@@ -1,0 +1,23 @@
+import cv2
+from deepface import DeepFace
+import matplotlib.pyplot as plot
+Datadirectory = "trainTest/"
+Classes = ["angry", "disgust", "fear", "happy", "neutral", "sad", "surprise"]
+# iterating throught the folder holding a specific emotion
+for emotion in Classes:
+    path = os.path.join(Datadirectory, emotion)
+    # accessing the image(s) in that specific folder/ file path
+    for img in os.listdir(path):
+        img_array = cv2.imread(os.path.join(path, img))
+        predictions = DeepFace.analyze(img_array, enforce_detection=False)
+        # determines the face in the image or picutre that is being fed
+        faceCascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+        gray = cv2.cvtColor(img_array, cv2.COLOR_BGR2GRAY)
+        faces = faceCascade.detectMultiScale(gray,1.1,4)
+        for x,y,w,h in faces:
+            cv2.rectangle(img_array, (x, y), (x+w, y+h), (255, 0, 0), 1)
+        font = cv2.FONT_HERSHEY_PLAIN
+        # places the emotion of the image on the resulting image
+        cv2.putText(img_array, predictions['dominant_emotion'], (0, 10), font, 0.7, (0, 255, 0), 1, cv2.LINE_4)
+        plot.imshow(cv2.cvtColor(img_array, cv2.COLOR_BGR2RGB))
+        plot.show()
